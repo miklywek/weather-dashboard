@@ -11,9 +11,10 @@ Previous searches are saved in localStorage and the five (5) most recent searche
 - HTML
 - CSS
 - Javascript
-  \*Open Weather APIs - Current Weather Data, UV Index and 5 day/ 3 Hour Forecast
+- Open Weather APIs - Current Weather Data, UV Index and 5 day/ 3 Hour Forecast
 - Bootstrap API
 - Moment.js API
-- ![Demonstration of the Work Day Scheduler.](./assets/img/Weather%20Dashboard.gif)
-- ## My app at github repository: https://github.com/miklywek/weather-dashboard
-- ## My app is live at github pages:https://miklywek.github.io/weather-dashboard/
+  ![Demonstration of the Work Day Scheduler.](./assets/img/Weather%20Dashboard.gif)
+  ## My app at github repository: https://github.com/miklywek/weather-dashboard
+
+## My app is live at github pages:https://miklywek.github.io/weather-dashboard/
