@@ -1,0 +1,6 @@
+/* .inline {
+  display: inline;
+} */
+.card-body {
+  flex: auto;
+}
