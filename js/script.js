@@ -16,14 +16,6 @@ var API_KEY = "d72f1830e848bc10baf5837e373cdebc";
 
 // UV index is a global variable
 var uvi;
-var getCityWeather = function (city) {
-  var apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${API_KEY}`;
-  fetch(apiURL).then(function (response) {
-    response.json().then(function (data) {
-      displayWeather(data, city);
-    });
-  });
-};
 var callApi = function (city) {
   var urlQuery =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -139,7 +131,6 @@ var startHadler = function (event) {
   if (city) {
     callApi(city);
     get5Day(city);
-    getCityWeather();
     cities.unshift({ city });
     searchInput.value = "";
   } else {
@@ -167,7 +158,7 @@ var saveSearch = function () {
 var pastSearchHandler = function (event) {
   var city = event.target.getAttribute("data-city");
   if (city) {
-    getCityWeather();
+    callApi(city);
     get5Day(city);
   }
 };
