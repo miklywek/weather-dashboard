@@ -48,31 +48,51 @@ var callApi = function (city) {
 
       var lat = data.coord.lat;
       var lon = data.coord.lon;
-      //   getUvIndex(lat, lon);
+      getUvIndex(lat, lon);
     });
 };
 
-// var getUvIndex = function (lat, lon) {
-//   var apiURL = `https://api.openweathermap.org/data/2.5/auvi?appid=${API_KEY}&lat=${lat}&lon${lon}`;
-//   fetch(apiURL).then(function (response) {
-//     console.log(response);
-//     if (response.ok) {
-//       response.json().then(function (data) {
-//         displayUvIndex(data);
-//         console.log(data);
-//       });
-//     } else {
-//       alert("Error: ");
-//     }
-//   });
-//   console.log(lat);
-//   console.log(lon);
-// };
-// var displayUvIndex = function (index) {
-//   var uvIndexEl = document.createElement("div");
-//   uvIndexEl.textContent = "UV Index:";
-//   curentWeatherEl.appendChild(uvIndexEl);
-// };
+var getUvIndex = function (lat, lon) {
+  //   var apiKey = "844421298d794574c100e3409cee0499";
+  var apiURL = `https://api.openweathermap.org/data/2.5/uvi?appid=${API_KEY}&lat=${lat}&lon=${lon}`;
+  fetch(apiURL).then(function (response) {
+    console.log(response);
+    if (response.ok) {
+      response.json().then(function (data) {
+        displayUvIndex(data);
+        console.log(data);
+      });
+    } else {
+      alert("Error: ");
+    }
+  });
+  console.log(lat);
+  console.log(lon);
+};
+var displayUvIndex = function (index) {
+  console.log(index);
+  var uvIndexEl = document.createElement("div");
+
+  if (index.value <= 2) {
+    uvIndexEl.setAttribute(
+      "style",
+      "background-color: green; max-height: 50px;"
+    );
+  } else if (index.value > 2 && index.value <= 8) {
+    index.value.setAttribute(
+      "style",
+      "background-color: yelow; max-height: 50px;"
+    );
+  } else if (index.value > 8) {
+    index.value.setAttribute(
+      "style",
+      "background-color: red; max-height: 50px;"
+    );
+  }
+  uvIndexEl.textContent = "UV Index:" + index.value;
+  //append index to current weather
+  curentWeatherEl.appendChild(uvIndexEl);
+};
 var get5Day = function (city) {
   var apiURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${API_KEY}`;
   fetch(apiURL).then(function (response) {
@@ -86,12 +106,12 @@ var display5Day = function (weather) {
   forecastContainerEl.textContent = "";
   var forecast = weather.list;
   for (var i = 5; i < forecast.length; i += 8) {
-    console.log(forecast);
+    // console.log(forecast);
     var dailyForecast = forecast[i];
 
     var forecastEl = document.createElement("div");
     forecastEl.classList = "card bg-primary text-light m-2";
-    console.log(dailyForecast);
+    // console.log(dailyForecast);
     //create date element
     var forecastDate = document.createElement("h5");
     forecastDate.textContent = moment
@@ -138,9 +158,6 @@ var startHadler = function (event) {
   }
   pastSearch(city);
   saveSearch();
-  //   // Empties input box to be used again
-  //   searchInput.value = "";
-  // Displays the recent searches
 };
 
 var pastSearch = function (pastSearch) {
