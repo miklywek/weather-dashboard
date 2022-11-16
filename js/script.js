@@ -71,10 +71,12 @@ var getUvIndex = function (lat, lon) {
 };
 var displayUvIndex = function (index) {
   console.log(index);
-  var uvIndexEl = document.createElement("div");
+
+  //   var uvIndexEl = document.createElement("div");
+  uvIndexBoxEl.textContent = "UV Index:" + index.value;
 
   if (index.value <= 2) {
-    uvIndexEl.setAttribute(
+    uvIndexBoxEl.setAttribute(
       "style",
       "background-color: green; max-height: 50px;"
     );
@@ -89,9 +91,10 @@ var displayUvIndex = function (index) {
       "background-color: red; max-height: 50px;"
     );
   }
-  uvIndexEl.textContent = "UV Index:" + index.value;
+
+  //   uvIndexEl.textContent = "UV Index:" + index.value;
   //append index to current weather
-  curentWeatherEl.appendChild(uvIndexEl);
+  //   curentWeatherEl.appendChild(uvIndexEl);
 };
 var get5Day = function (city) {
   var apiURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${API_KEY}`;
@@ -155,6 +158,7 @@ var startHadler = function (event) {
     searchInput.value = "";
   } else {
     alert("Please enter a City");
+    return;
   }
   pastSearch(city);
   saveSearch();
