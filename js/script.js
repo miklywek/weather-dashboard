@@ -2,7 +2,7 @@ var cities = [];
 // Target Elements of Page
 var searchInput = document.getElementById("search-input");
 var searchBtn = document.getElementById("search-btn");
-var citiesList = document.getElementById("cities-list");
+// var citiesList = document.getElementById("cities-list");
 var forecastContainerEl = document.getElementById("forecast-container");
 var curentWeatherEl = document.getElementById("current-weather");
 var cityNameEl = document.getElementById("cityName");
